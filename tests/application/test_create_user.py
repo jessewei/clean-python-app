@@ -1,8 +1,10 @@
 import pytest
-from src.application.use_cases.create_user import CreateUserUseCase
-from src.interfaces.user_repository import UserRepository
-from src.domain.entities.user import User
-from src.domain.value_objects.email import Email
+from application.use_cases.create_user import CreateUserUseCase
+
+# from src.application.use_cases.create_user import CreateUserUseCase
+from interfaces.user_repository import UserRepository
+from domain.entities.user import User
+from domain.value_objects.email import Email
 
 
 class MockUserRepository(UserRepository):

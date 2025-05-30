@@ -1,7 +1,7 @@
-from src.domain.entities.user import User
-from src.domain.value_objects.email import Email
-from src.interfaces.user_repository import UserRepository
-from src.application.dtos.user_dto import UserDTO
+from domain.entities.user import User
+from domain.value_objects.email import Email
+from interfaces.user_repository import UserRepository
+from application.dtos.user_dto import UserDTO
 
 
 class CreateUserUseCase:

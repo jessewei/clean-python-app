@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from src.domain.value_objects.email import Email
+from domain.value_objects.email import Email
 
 
 @dataclass

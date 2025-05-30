@@ -15,3 +15,16 @@ dev-dependencies = [
     "pytest>=7.0.0",
     "pytest-asyncio>=0.23.0",
 ]
+
+[tool.pytest.ini_options]
+python_classes = ["Test", "Describe"]
+python_functions = ["test_", "it_", "and_", "but_", "they_"]
+python_files = ["test_*.py",]
+testpaths = ["tests",]
+markers = [
+    "log: marks tests as odplib log function",
+    "pytest: marks tests as odplib pytest function",
+]
+# This tells pytest to add the 'src' directory to Python's import path
+pythonpath = ["src"]
+asyncio_default_fixture_loop_scope = "function" # Or "module" or "session"

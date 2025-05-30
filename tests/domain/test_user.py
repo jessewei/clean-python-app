@@ -1,6 +1,6 @@
 import pytest
-from src.domain.entities.user import User
-from src.domain.value_objects.email import Email
+from domain.entities.user import User
+from domain.value_objects.email import Email
 
 
 def test_user_creation():

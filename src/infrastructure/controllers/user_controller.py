@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
-from src.application.use_cases.create_user import CreateUserUseCase
-from src.application.dtos.user_dto import UserDTO
-from src.infrastructure.repositories.sqlalchemy_user_repository import SQLAlchemyUserRepository
-from src.infrastructure.database.database import AsyncSession, get_db
+from application.use_cases.create_user import CreateUserUseCase
+from application.dtos.user_dto import UserDTO
+from infrastructure.repositories.sqlalchemy_user_repository import SQLAlchemyUserRepository
+from infrastructure.database.database import AsyncSession, get_db
 
 router = APIRouter()
 

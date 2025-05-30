@@ -1,0 +1,34 @@
+@startuml
+Client -> UserController: POST /users/ {name, email} 
+activate UserController
+
+UserController -> CreateUserUseCase: execute(name, email) 
+activate CreateUserUseCase
+
+CreateUserUseCase -> CreateUserUseCase: Create Email(value=email) 
+CreateUserUseCase -> CreateUserUseCase: Create User(id=0, name, email) 
+CreateUserUseCase -> UserRepository: save(user) 
+activate UserRepository
+
+UserRepository -> SQLAlchemyUserRepository: save(user) 
+activate SQLAlchemyUserRepository
+
+SQLAlchemyUserRepository -> Database: Insert UserModel(name, email) 
+activate Database 
+Database --> SQLAlchemyUserRepository: Return generated ID 
+deactivate Database
+
+SQLAlchemyUserRepository -> SQLAlchemyUserRepository: Set user.id = generated ID 
+SQLAlchemyUserRepository --> UserRepository: 
+deactivate SQLAlchemyUserRepository
+
+UserRepository --> CreateUserUseCase: 
+deactivate UserRepository
+
+CreateUserUseCase -> CreateUserUseCase: Create UserDTO(id, name, email) 
+CreateUserUseCase --> UserController: Return UserDTO 
+deactivate CreateUserUseCase
+
+UserController --> Client: Return UserDTO (JSON response) 
+deactivate UserController
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+
+package "Domain" #DDDDDD {
+  [User] 
+  [Email] 
+  [DomainError] 
+}
+
+package "Application" #BBCCEE {
+  [CreateUserUseCase] 
+  [UserDTO] 
+}
+
+package "Interfaces" #AABBCC { 
+  [UserRepository] 
+   }
+
+package "Infrastructure" #99AABB { 
+  package "Controllers" { 
+    [UserController]  
+    } 
+  package "Repositories" {
+     [SQLAlchemyUserRepository]  
+     } 
+  package "Databases" { 
+    [UserModel] 
+    [Database]
+    }
+}
+
+Application .up.> Domain
+Application .right.> Interfaces
+Infrastructure .down.> Interfaces
+Infrastructure .up.> Application
+@enduml

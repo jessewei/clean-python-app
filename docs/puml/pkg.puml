@@ -1,4 +1,4 @@
-@startuml
+@startuml Package
 
 package "Domain" #DDDDDD {
   [User] 
@@ -28,8 +28,10 @@ package "Infrastructure" #99AABB {
     }
 }
 
-Application .up.> Domain
-Application .right.> Interfaces
 Infrastructure .down.> Interfaces
-Infrastructure .up.> Application
+Infrastructure .down.> Application
+
+Application <.up.> Interfaces
+Application <.down.> Domain
+
 @enduml

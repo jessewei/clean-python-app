@@ -1,26 +1,25 @@
 @startuml Sequence
 participant Client
 box  Infra 
-  participant UserController as  "Controller:\nUse"
+  participant UserController as  "Controller:\nUser"
   participant Database as  "DB:\nDatabase"
   participant SQLAlchemyUserRepository as  "Repo:\nSQL User"
 end box
 
+box Itf
+  participant UserRepository as  "Repo:\nUser Repository"
+end box
+
 box Apps
-  ' box Usecase
-    participant UserRepository as  "Usecase:\nSave User"
-    participant CreateUserUseCase as  "Usecase:\nCreate User"
-  ' end box
+    ' participant UserRepository as  "Usecase:\nSave User"
+  participant CreateUserUseCase as  "Usecase:\nCreate User"
   participant UserDTO as  "DTO:\nUser DTO"
-  ' participant DomainError as  "Apps.Error:\nDomain Error"
 end box
 
 box Domain
   participant User as  "User"
   participant Email as  "Email"
 end box
-' participant SQLAlchemyUserRepository as  "Infra.Repo:\nSQLAlchemy User"
-' participant Database as  "Infra.DB:\nDatabase"
 
 
 Client -> UserController: POST /users/ {name, email} 
